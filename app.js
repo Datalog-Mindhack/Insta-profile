@@ -1,10 +1,28 @@
 const express = require("express");
+const https = require("https");
 const bodyParser = require("body-parser");
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("Public"));
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/index.html");
-})
+});
+app.post("/",function(req,res){
+  const user_name = req.body.user_name;
+
+  const url = "https://www.instagram.com/"+user_name+"/?__a=1";
+  https.get(url, function(response){
+    console.log(response.statusCode);
+  response.on("data", function(data){
+    const info = JSON.parse(data);
+    const name = info.graphql.user.full_name;
+    const following = info.graphql.user.edge_follow.count;
+    const followers = info.graphql.user.edge_followed_by.count;
+console.log(info);
+
+  });
+});
+});
 app.listen(3000,function(){
   console.log("Started");
 })
