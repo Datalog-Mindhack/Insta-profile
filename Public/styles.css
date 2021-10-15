@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 150vh;
+  height: 80vh;
   overflow: hidden;
   margin: 0;
 }
@@ -23,13 +23,11 @@ body {
   width: 100%;
   max-width: 600px;
 }
-.fill-info{
-  padding: 100px 200px 200px 200px;
-}
+
 .user-form input {
   width: 90%;
   display: block;
-  background-color: #EEEEEE;
+  background-color: #e2e4e5;
   border: none;
   border-radius: 20px;
   color: #fff;
@@ -42,7 +40,12 @@ body {
 }
 
 .user-form input::placeholder {
-  color: #bbb;
+  color: rgb(12, 11, 11);
+}
+
+
+.user-form input:focus {
+  outline: none;
 }
 img{
     size: 100px;
@@ -50,10 +53,6 @@ img{
     border-radius: 50px;
     border-style: hidden;
 
-}
-
-.user-form input:focus {
-  outline: none;
 }
 
 .card {
